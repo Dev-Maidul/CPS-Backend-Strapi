@@ -21,18 +21,21 @@
       "type": "integer"
     },
     "duration": {
-      "type": "string"
+      "type": "integer"
     },
     "lessons": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::lesson.lesson"
     },
-    "course": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::course.course",
-      "mappedBy": "module"
+    "classes": {
+      "type": "string"
+    },
+    "topics": {
+      "type": "string"
+    },
+    "video_url": {
+      "type": "string"
     }
   }
 }

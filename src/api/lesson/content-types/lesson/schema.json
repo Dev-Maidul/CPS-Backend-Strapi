@@ -20,16 +20,11 @@
     "videoUrl": {
       "type": "string"
     },
-    "duration": {
-      "type": "string"
-    },
     "order": {
       "type": "integer"
     },
-    "modules": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::module.module"
+    "duration": {
+      "type": "integer"
     }
   }
 }

@@ -17,9 +17,6 @@
     "description": {
       "type": "string"
     },
-    "price": {
-      "type": "string"
-    },
     "instructor": {
       "type": "string"
     },
@@ -32,25 +29,29 @@
     "level": {
       "type": "string"
     },
-    "duration": {
-      "type": "string"
-    },
     "rating": {
       "type": "decimal"
     },
-    "image": {
-      "type": "string"
+    "price": {
+      "type": "integer"
+    },
+    "duration": {
+      "type": "decimal"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "modules": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::module.module"
-    },
-    "module": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::module.module",
-      "inversedBy": "course"
     }
   }
 }
