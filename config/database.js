@@ -1,33 +1,20 @@
-module.exports = ({ env }) => {
-  // For Railway PostgreSQL
-  if (env('DATABASE_URL')) {
-    const parse = require('pg-connection-string').parse;
-    const config = parse(env('DATABASE_URL'));
-    
-    return {
-      connection: {
-        client: 'postgres',
-        connection: {
-          host: config.host,
-          port: config.port,
-          database: config.database,
-          user: config.user,
-          password: config.password,
-          ssl: env.bool('DATABASE_SSL', true),
-        },
-        debug: false,
-      },
-    };
-  }
+const { parse } = require('pg-connection-string');
 
-  // Fallback to SQLite for local development
+module.exports = ({ env }) => {
+  const { host, port, database, user, password } = parse(env('DATABASE_URL'));
+  
   return {
     connection: {
-      client: 'sqlite',
+      client: 'postgresql',
       connection: {
-        filename: env('DATABASE_FILENAME', '.tmp/data.db'),
+        host,
+        port,
+        database,
+        user,
+        password,
+        ssl: env.bool('DATABASE_SSL', false),
       },
-      useNullAsDefault: true,
+      debug: false,
     },
   };
 };
